@@ -85,7 +85,12 @@
 
 <script>
 export default {
-  name: "City"
+  name: "City",
+  mounted() {
+    this.axios.get("ajax/filterCinemas?ci=57").then(res => {
+      console.log(res);
+    });
+  }
 };
 </script>
 
