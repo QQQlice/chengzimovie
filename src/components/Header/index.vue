@@ -1,6 +1,7 @@
 <template>
   <header id="header">
     <h1>{{title}}</h1>
+    <i class="iconfont icon-chengzi"></i>
   </header>
 </template>
 <script>
@@ -31,9 +32,9 @@ export default {
 }
 #header i {
   position: absolute;
-  left: 5px;
+  left: 7px;
   top: 50%;
-  margin-top: -13px;
-  font-size: 26px;
+  margin-top: -15px;
+  font-size: 28px;
 }
 </style>

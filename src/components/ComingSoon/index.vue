@@ -59,7 +59,7 @@
       </li>
       <li>
         <div class="pic_show">
-          <img src="images/movie_1.jpg">
+          <img src="/images/movie_1.jpg">
         </div>
         <div class="info_list">
           <h2>无名之辈</h2>
