@@ -87,9 +87,55 @@
 export default {
   name: "City",
   mounted() {
-    this.axios.get("ajax/filterCinemas?ci=57").then(res => {
+    this.axios.get("/dianying/cities.json").then(res => {
       console.log(res);
+      console.log(res.data);
+      console.log(res.data.cts);
+      if(res.data){
+        var cities = res.data.cts;
+        //将城市名由A-Z排序
+        this.formatCityList(cities);
+      }
     });
+  },
+  methods:{
+    formatCityList(cities){
+      var cityList=[];
+      var hotList=[];
+
+      for(var i=0;i<cities.length;i++){
+        var firstletter = cities[i].py.substring(0,1).toUpperCase();
+        if(toCom(firstletter)){ // 添加新值
+          cityList.push({index:firstletter, list:[{nm:cities[i].nm,id:cities[i].id}]});
+        }else{   //累加到已有index中
+                    for(var j=0;j<cityList.length;j++){
+                        if( cityList[j].index === firstletter ){
+                            cityList[j].list.push( { nm : cities[i].nm , id : cities[i].id } );
+                        }
+                    }
+                }
+      }
+
+    cityList.sort((n1,n2)=>{
+      if(n1.index > n2.index){
+        return 1;
+      }else if(n1.index < n2.index){
+        return -1;
+      }else{
+        return 0;
+      }
+    });
+
+      function toCom(firstletter){
+        for(var i=0;i<cityList.length;i++){
+          if(cityList[i].index==firstletter){
+            return false;
+          }
+        }
+        return true;
+      }
+      console.log(cityList);
+    }
   }
 };
 </script>
