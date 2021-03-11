@@ -23,4 +23,7 @@ export default {
 </script>
 
 <style>
+#content {
+  margin-top: 50px;
+}
 </style>
